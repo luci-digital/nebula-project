@@ -1,0 +1,22 @@
+#### `Dockerfile`
+This file contains instructions to build the Docker image for Lucia AI:
+```dockerfile
+# Base image
+FROM python:3.9-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the requirements file and install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application
+COPY src/ /app/src/
+COPY configs/ /app/configs/
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1
+
+# Run the application
+CMD ["python", "src/lucia_ai/main.py"]
