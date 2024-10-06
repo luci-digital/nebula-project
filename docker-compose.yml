@@ -1,0 +1,11 @@
+version: '3'
+services:
+  lucia_ai:
+    build: .
+    environment:
+      - ENVIRONMENT=production
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./src:/app/src
+      - ./configs:/app/configs
